@@ -10,19 +10,23 @@ RSpec.describe InfoNutricional do
 
     describe "Existe la información obligatoria" do
       it "Debe existir un nombre para la etiqueta" do
-        expect(@etiqueta.nombre).not_to be_empty
+        expect(@etiqueta.nombre).not_to be nil
       end
       it "Debe existir la cantidad de grasas" do
         expect(@etiqueta).to respond_to(:grasas)
+        expect(@etiqueta.grasas).to eq(27.6)
       end
       it "Debe existir la cantidad de grasas saturadas" do
         expect(@etiqueta).to respond_to(:grasas_saturadas)
+        expect(@etiqueta.grasas_saturadas).to eq(16)
       end
       it "Debe existir la cantidad de hidratos de carbono" do
         expect(@etiqueta).to respond_to(:hidratos)
+        expect(@etiqueta.hidratos).to eq(61)
       end
       it "Debe existir la cantidad de azucares" do
         expect(@etiqueta).to respond_to(:azucar)
+        expect(@etiqueta.azucar).to eq(54.8)
       end
       it "Debe existir la cantidad de proteinas" do
         expect(@etiqueta).to respond_to(:proteinas)
