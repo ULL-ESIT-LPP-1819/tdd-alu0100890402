@@ -5,7 +5,7 @@ RSpec.describe InfoNutricional do
 
   describe InfoNutricional::Etiqueta do
     before :each do
-      @etiqueta = InfoNutricional::Etiqueta.new("KitKat",27.6, 16)
+      @etiqueta = InfoNutricional::Etiqueta.new("KitKat",27.6, 16, 61)
     end
 
     describe "Existe la información obligatoria" do
@@ -17,6 +17,9 @@ RSpec.describe InfoNutricional do
       end
       it "Debe existir la cantidad de grasas saturadas" do
         expect(@etiqueta).to respond_to(:grasas_saturadas)
+      end
+      it "Debe existir la cantidad de hidratos de carbono" do
+        expect(@etiqueta).to respond_to(:hidratos)
       end
     end
   end
