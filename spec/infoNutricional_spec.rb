@@ -3,9 +3,9 @@ RSpec.describe InfoNutricional do
     expect(InfoNutricional::VERSION).not_to be nil
   end
 
-  describe InfoNutricional::Etiqueta do
+  describe Etiqueta do
     before :each do
-      @etiqueta = InfoNutricional::Etiqueta.new("KitKat",27.6, 16, 61, 54.8, 6.5, 0.24)
+      @etiqueta = Etiqueta.new("KitKat",27.6, 16, 61, 54.8, 6.5, 0.24)
     end
 
     describe "Existe la información obligatoria" do
