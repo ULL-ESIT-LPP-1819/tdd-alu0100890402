@@ -35,6 +35,27 @@ RSpec.describe InfoNutricional do
       it "Existe un método para calcular el valor energético" do
         expect(@etiqueta).to respond_to(:valor_energetico)
       end
+      it "Existe un metodo para obtener la IR de grasas" do
+        expect(@etiqueta).to respond_to(:grasas_ir)
+      end
+      it "Existe un metodo para obtener la IR de grasas saturadas" do
+        expect(@etiqueta).to respond_to(:grasas_saturadas_ir)
+      end
+      it "Existe un metodo para obtener la IR de hidratos" do
+        expect(@etiqueta).to respond_to(:hidratos_ir)
+      end
+      it "Existe un metodo para obtener la IR de azucar" do
+        expect(@etiqueta).to respond_to(:azucar_ir)
+      end
+      it "Existe un metodo para obtener la IR de proteinas" do
+        expect(@etiqueta).to respond_to(:proteinas_ir)
+      end
+      it "Existe un metodo para obtener la IR de sal" do
+        expect(@etiqueta).to respond_to(:sal_ir)
+      end
+      # it "Existe un método para obtener la etiqueta formateada" do
+      #   expect(@etiqueta).to respond_to(:formateada)
+      # end
     end
   end
 end
