@@ -31,5 +31,10 @@ RSpec.describe InfoNutricional do
         expect(@etiqueta).to respond_to(:sal)
       end
     end
+    describe "Existen métodos para obtener valores" do
+      it "Existe un método para calcular el valor energético" do
+        expect(@etiqueta).to respond_to(:valor_energetico)
+      end
+    end
   end
 end
