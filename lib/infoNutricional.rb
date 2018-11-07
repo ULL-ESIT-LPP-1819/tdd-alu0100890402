@@ -2,5 +2,11 @@ require "infoNutricional/version"
 
 module InfoNutricional
   class Error < StandardError; end
-  # Your code goes here...
+
+  class Etiqueta
+    #attr_reader
+
+
+  end
+  
 end
