@@ -53,9 +53,9 @@ RSpec.describe InfoNutricional do
       it "Existe un metodo para obtener la IR de sal" do
         expect(@etiqueta).to respond_to(:sal_ir)
       end
-      # it "Existe un método para obtener la etiqueta formateada" do
-      #   expect(@etiqueta).to respond_to(:formateada)
-      # end
+      it "Existe un método para obtener la etiqueta formateada" do
+        expect(@etiqueta).to respond_to(:formateado)
+      end
     end
   end
 end
