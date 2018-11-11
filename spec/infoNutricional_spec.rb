@@ -30,9 +30,11 @@ RSpec.describe InfoNutricional do
       end
       it "Debe existir la cantidad de proteinas" do
         expect(@etiqueta).to respond_to(:proteinas)
+        expect(@etiqueta.proteinas).to eq(6.5)
       end
       it "Debe existir la cantidad de sal" do
         expect(@etiqueta).to respond_to(:sal)
+        expect(@etiqueta.sal).to eq(0.24)
       end
     end
     describe "Existen métodos para obtener valores" do
@@ -62,4 +64,14 @@ RSpec.describe InfoNutricional do
       end
     end
   end
+
+  describe List do
+    before :all do
+      @lista = List.new
+    end
+    it "Debe existir el objeto Lista" do
+      expect(@lista).not_to be nil
+    end
+  end
+
 end
