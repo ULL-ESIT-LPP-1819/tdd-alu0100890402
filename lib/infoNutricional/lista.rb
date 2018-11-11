@@ -2,5 +2,8 @@
 Node = Struct.new(:value,:next,:prev)
 
 class List
-
+  attr_reader :nodo
+  def initialize(dato)
+    @nodo = Node.new(dato, nil, nil)
+  end
 end

@@ -67,10 +67,15 @@ RSpec.describe InfoNutricional do
 
   describe List do
     before :all do
-      @lista = List.new
+      @lista = List.new("123")
     end
-    it "Debe existir el objeto Lista" do
-      expect(@lista).not_to be nil
+    describe "Se crea el objeto correctamente" do
+      it "Debe existir el objeto Lista" do
+        expect(@lista).not_to be nil
+      end
+      it "Se debe poder leer el valor del Nodo" do
+        expect(@lista.nodo).not_to be nil
+      end
     end
   end
 
