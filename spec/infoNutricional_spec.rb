@@ -121,12 +121,36 @@ RSpec.describe InfoNutricional do
       context "para clasificar una lista por categoría (ej: sal)" do
         before :all do
           @listaEtiquetas = List.new
-          @kitkat =  Etiqueta.new("KitKat",27.6, 16, 61, 54.8, 6.5, 0.24)
-
+          @sal_alta, @sal_baja = [], []
+          @kitkat = Etiqueta.new("KitKat",27.6, 16, 61, 54.8, 6.5, 0.24)
+          @snickers = Etiqueta.new("Snickers",19.4, 10.2, 34.5, 26.3, 5.8, 0.22)
+          @pringles =  Etiqueta.new("Pringles",33, 9.6, 52.7, 2.6, 4, 0.592)
+          @doritos =  Etiqueta.new("Doritos",25.8, 12.5, 61, 3.5, 7.6, 0.382)
+          @jamon =  Etiqueta.new("Jamon Serrano",22.2, 6.53, 0.5, 0.4, 33.2, 3.1)
         end
         it "Se insertan las etiquetas correctamente en la lista" do
           @listaEtiquetas.insertar_front(@kitkat)
+          @listaEtiquetas.insertar_front(@snickers)
+          @listaEtiquetas.insertar_front(@pringles)
+          @listaEtiquetas.insertar_front(@doritos)
+          @listaEtiquetas.insertar_front(@jamon)
           expect(@listaEtiquetas.head.value).to be_an_instance_of Etiqueta
+          expect(@listaEtiquetas.tail.value).to be_an_instance_of Etiqueta
+        end
+        it "Se eliminan las etiquetas de la lista al sacarlas" do
+          until @listaEtiquetas.empty
+            el = @listaEtiquetas.pop_front
+            if (el.sal > 0.3)
+              @sal_alta.push el
+            else
+              @sal_baja.push el
+            end
+          end
+          expect(@listaEtiquetas.empty).to be true
+        end
+        it "Se guardan los valores correctamente clasificados" do
+          expect(@sal_baja.length).to eq 2
+          expect(@sal_alta.length).to eq 3
         end
       end
     end
