@@ -11,18 +11,30 @@ class List
   end
   def insertar_front(valor)
     n = Node.new(valor,@head,nil)
-    @head = n
     if empty
-      @tail = @head
+      @head, @tail = n, n
+    else
+      @head.prev = n
+      @head = n
     end
   end
   def insertar_back(valor)
     n = Node.new(valor,nil,@tail)
-    @tail = n
     if empty
-      @head = @tail
+      @head, @tail = n, n
+    else
+      @tail.next = n
+      @tail = n
     end
   end
-  def eliminar_front
+  def pop_front
+    res = @head
+    @head = @head.next
+    res.value
+  end
+  def pop_back
+    res = @tail
+    @tail = @tail.prev
+    res.value
   end
 end

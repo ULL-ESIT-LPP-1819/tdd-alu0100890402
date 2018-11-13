@@ -87,21 +87,47 @@ RSpec.describe InfoNutricional do
         expect(@lista).to respond_to(:empty)
         expect(@lista.empty).to be true
       end
-      it "Existe un método para insertar por delante un nuevo elemento" do
-        expect(@lista).to respond_to(:insertar_front)
-        expect(@lista.head).to be nil
-        @lista.insertar_front 25
-        expect(@lista.head.value).to eq 25
+      context "para insertar nodos:" do
+        before :each do
+          @lista.insertar_front "initialized"
+        end
+        it "Existe un método para insertar por delante un nuevo elemento" do
+          expect(@lista).to respond_to(:insertar_front)
+          @lista.insertar_front 25
+          expect(@lista.head.value).to eq 25
+        end
+        it "Existe un método para insertar por detras un nuevo elemento" do
+          expect(@lista).to respond_to(:insertar_back)
+          @lista.insertar_back "hello"
+          expect(@lista.tail.value).to eq "hello"
+        end
       end
-      it "Existe un método para insertar por detras un nuevo elemento" do
-        expect(@lista).to respond_to(:insertar_back)
-        expect(@lista.tail).to be nil
-        @lista.insertar_back "hello"
-        expect(@lista.tail.value).to eq "hello"
+      context "para eliminar nodos:" do
+        before :each do
+          @lista.insertar_back("back")
+          @lista.insertar_front("front")
+        end
+        it "Existe un metodo para eliminar por delante un elemento" do
+          expect(@lista).to respond_to(:pop_front)
+          expect(@lista.pop_front).to eq "front"
+          expect(@lista.head.value).to eq "back"
+        end
+        it "Existe un metodo para eliminar por detras un elemento" do
+          expect(@lista).to respond_to(:pop_back)
+          expect(@lista.pop_back).to eq "back"
+          expect(@lista.head.value).to eq "front"
+        end
       end
-      it "Existe un metodo para eliminar por delante un elemento" do
-        expect(@lista).to respond_to(:eliminar_front)
+      context "para clasificar una lista por categoría (ej: sal)" do
+        before :all do
+          @listaEtiquetas = List.new
+          @kitkat =  Etiqueta.new("KitKat",27.6, 16, 61, 54.8, 6.5, 0.24)
 
+        end
+        it "Se insertan las etiquetas correctamente en la lista" do
+          @listaEtiquetas.insertar_front(@kitkat)
+          expect(@listaEtiquetas.head.value).to be_an_instance_of Etiqueta
+        end
       end
     end
   end
