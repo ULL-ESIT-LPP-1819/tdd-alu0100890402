@@ -66,15 +66,42 @@ RSpec.describe InfoNutricional do
   end
 
   describe List do
-    before :all do
-      @lista = List.new("123")
+    before :each do
+      @lista = List.new
     end
     describe "Se crea el objeto correctamente" do
-      it "Debe existir el objeto Lista" do
+      it "Existe el objeto Nodo" do
+        n = Node.new
+        expect(n).not_to be nil
+      end
+      it "Se crea el objeto lista" do
         expect(@lista).not_to be nil
       end
-      it "Se debe poder leer el valor del Nodo" do
-        expect(@lista.nodo).not_to be nil
+      it "Se puede acceder al principio y final de la lista" do
+        expect(@lista).to respond_to(:head)
+        expect(@lista).to respond_to(:tail)
+      end
+    end
+    describe "Existen métodos para manipularlo" do
+      it "Existe un método que indica si la lista está vacía" do
+        expect(@lista).to respond_to(:empty)
+        expect(@lista.empty).to be true
+      end
+      it "Existe un método para insertar por delante un nuevo elemento" do
+        expect(@lista).to respond_to(:insertar_front)
+        expect(@lista.head).to be nil
+        @lista.insertar_front 25
+        expect(@lista.head.value).to eq 25
+      end
+      it "Existe un método para insertar por detras un nuevo elemento" do
+        expect(@lista).to respond_to(:insertar_back)
+        expect(@lista.tail).to be nil
+        @lista.insertar_back "hello"
+        expect(@lista.tail.value).to eq "hello"
+      end
+      it "Existe un metodo para eliminar por delante un elemento" do
+        expect(@lista).to respond_to(:eliminar_front)
+
       end
     end
   end
