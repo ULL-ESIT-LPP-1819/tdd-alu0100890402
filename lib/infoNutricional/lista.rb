@@ -37,4 +37,20 @@ class List
     @tail = @tail.prev
     res.value
   end
+
+  def to_s
+    if empty
+      return "H -> nil <- T"
+    end
+    cad = "H -> "
+    current = @tail
+    until current == nil
+      cad = cad + current.value.to_s
+      current = current.prev
+      if (current != nil)
+        cad = cad + " <-> "
+      end
+    end
+    cad = cad + " <- T"
+  end
 end

@@ -118,6 +118,17 @@ RSpec.describe InfoNutricional do
           expect(@lista.head.value).to eq "front"
         end
       end
+      context "para imprimirlo por pantalla" do
+        it "si la lista está vacía" do
+          expect(@lista.empty).to be true
+          expect(@lista.to_s).to eq "H -> nil <- T"
+        end
+        it "si la lista tiene elementos" do
+          @lista.insertar_front 1
+          @lista.insertar_front 2
+          expect(@lista.to_s).to eq "H -> 1 <-> 2 <- T"
+        end
+      end
       context "para clasificar una lista por categoría (ej: sal)" do
         before :all do
           @listaEtiquetas = List.new
