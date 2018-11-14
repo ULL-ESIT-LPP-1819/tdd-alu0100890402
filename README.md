@@ -1,6 +1,7 @@
 # InfoNutricional
 
 Clase que permite representar los valores de una etiqueta de información nutricional.
+Incluye también la clase lista desde la version 0.2
 
 ## Installation
 
