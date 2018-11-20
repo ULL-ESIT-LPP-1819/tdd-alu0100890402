@@ -167,6 +167,34 @@ RSpec.describe InfoNutricional do
     end
   end
 
-  # describe Valoracion do
-  # end
+  describe Persona do
+    before :all do
+      @persona = Persona.new('Nombre','Apellido',9,1)
+    end
+    describe "La persona se crea correctamente:" do
+      it "tiene un nombre" do
+        expect(@persona.nombre).not_to be nil
+      end
+      it "tiene un apellido" do
+        expect(@persona.apellido).not_to be nil
+      end
+      it "tiene una edad" do
+        expect(@persona.edad).not_to be nil
+      end
+      it "tiene un sexo" do
+        expect(@persona.sexo).not_to be nil
+      end
+    end
+    context "Tiene métodos para manejarlo:" do
+      it "puede saludar" do
+        expect(@persona).to respond_to :saludar
+      end
+      it "dice su edad" do
+        expect(@persona).to respond_to :mi_edad
+      end
+      it "tiene el metodo to_s" do
+        expect(@persona.to_s).to eq "Hola, soy Nombre Apellido. Tengo 9 años."
+      end
+    end
+  end
 end
