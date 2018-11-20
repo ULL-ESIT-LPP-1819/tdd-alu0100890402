@@ -167,4 +167,6 @@ RSpec.describe InfoNutricional do
     end
   end
 
+  # describe Valoracion do
+  # end
 end
