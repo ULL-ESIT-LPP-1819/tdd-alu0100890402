@@ -200,8 +200,7 @@ RSpec.describe InfoNutricional do
 
   describe Paciente do
     before :all do
-      datos = DatosAntrop.new(100,1.80,22,1,90,90)
-      @paciente = Paciente.new('Paciente','Apellido',9,1,datos)
+      @paciente = Paciente.new('Paciente','Apellido',9,1,100,1.80,90,90)
     end
     describe "Se crea el objeto correctamente" do
       it "tiene un nombre" do
@@ -228,14 +227,41 @@ RSpec.describe InfoNutricional do
         expect(@paciente.tratamiento).not_to be nil
       end
     end
-    # describe "Se pueden clasificar" do
-    #   before :all do
-    #
-    #   end
-    #   it "por su IMC" do
-    #
-    #   end
-    # end
+    describe "Se pueden clasificar" do
+      before :all do
+        @listaPacientes = List.new
+        @sobrepeso, @saludable = [], []
+        # nombre apellido edad sexo peso talla cintura cadera
+        @paciente2 = Paciente.new('Jorge','Porto',22,1,63,1.75,70,80)
+        @paciente3 = Paciente.new('Eduardo','Flores',22,1,76,1.80,75,85)
+        @paciente4 = Paciente.new('Jesus','Jorge',47,1,80,1.87,80,83)
+        @paciente5 = Paciente.new('Sara','Porto',43,0,66,1.55,74,105)
+      end
+      it "se insertan los pacientes en la lista" do
+        @listaPacientes.insertar_front(@paciente)
+        @listaPacientes.insertar_front(@paciente2)
+        @listaPacientes.insertar_front(@paciente3)
+        @listaPacientes.insertar_front(@paciente4)
+        @listaPacientes.insertar_front(@paciente5)
+        expect(@listaPacientes.head.value).to be_an_instance_of Paciente
+        expect(@listaPacientes.tail.value).to be_an_instance_of Paciente
+      end
+      it "Se eliminan los pacientes de la lista al sacarlos" do
+        until @listaPacientes.empty
+          paciente = @listaPacientes.pop_front
+          if (paciente.tratamiento != 'sano')
+            @sobrepeso.push paciente
+          else
+            @saludable.push paciente
+          end
+        end
+        expect(@listaPacientes.empty).to be true
+      end
+      it "Se guardan los valores correctamente clasificados" do
+        expect(@sobrepeso.length).to eq 2
+        expect(@saludable.length).to eq 3
+      end
+    end
   end
 
   describe "Comprobación de jerarquía y tipo de clases" do
@@ -243,8 +269,7 @@ RSpec.describe InfoNutricional do
       @etiqueta = Etiqueta.new("KitKat",27.6, 16, 61, 54.8, 6.5, 0.24)
       @lista = List.new
       @persona = Persona.new('Nombre','Apellido',9,1)
-      datos = DatosAntrop.new(100,1.80,22,1,90,90)
-      @paciente = Paciente.new('Paciente','Apellido',9,1,datos)
+      @paciente = Paciente.new('Paciente','Apellido',9,1,100,1.80,90,90)
     end
     describe "Jerarquia de clase Etiqueta" do
       it "es una instancia de etiqueta" do

@@ -2,15 +2,18 @@
 
 class Paciente < Persona
   attr_reader :datosAntrop
-  def initialize (nombre,apellido,edad,sexo,datosAntrop)
+  def initialize (nombre,apellido,edad,sexo,peso,talla,cintura,cadera)
     super(nombre,apellido,edad,sexo)
-    @datosAntrop = datosAntrop
+    @datosAntrop = DatosAntrop.new(peso,talla,edad,sexo,cintura,cadera)
   end
   def tratamiento
     if datosAntrop.imc_value >= 25
-      "En tratamiento por #{datosAntrop.imc_descripcion}"
+      "en tratamiento por #{datosAntrop.imc_descripcion}"
     else
-      "Paciente sano"
+      "sano"
     end
+  end
+  def to_s
+    "#{super} Estoy #{tratamiento}."
   end
 end
