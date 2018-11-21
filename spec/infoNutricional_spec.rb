@@ -197,4 +197,121 @@ RSpec.describe InfoNutricional do
       end
     end
   end
+
+  describe Paciente do
+    before :all do
+      datos = DatosAntrop.new(100,1.80,22,1,90,90)
+      @paciente = Paciente.new('Paciente','Apellido',9,1,datos)
+    end
+    describe "Se crea el objeto correctamente" do
+      it "tiene un nombre" do
+        expect(@paciente.nombre).not_to be nil
+      end
+      it "tiene un apellido" do
+        expect(@paciente.apellido).not_to be nil
+      end
+      it "tiene una edad" do
+        expect(@paciente.edad).not_to be nil
+      end
+      it "tiene un sexo" do
+        expect(@paciente.sexo).not_to be nil
+      end
+      it "tiene informacion de sus datos antropometricos" do
+        expect(@paciente.datosAntrop).not_to be nil
+      end
+    end
+    describe "tiene metodos para manejar los datos:" do
+      it "puede saludar" do
+        expect(@paciente.saludar).not_to be nil
+      end
+      it "dice si está en tratamiento" do
+        expect(@paciente.tratamiento).not_to be nil
+      end
+    end
+    # describe "Se pueden clasificar" do
+    #   before :all do
+    #
+    #   end
+    #   it "por su IMC" do
+    #
+    #   end
+    # end
+  end
+
+  describe "Comprobación de jerarquía y tipo de clases" do
+    before :all do
+      @etiqueta = Etiqueta.new("KitKat",27.6, 16, 61, 54.8, 6.5, 0.24)
+      @lista = List.new
+      @persona = Persona.new('Nombre','Apellido',9,1)
+      datos = DatosAntrop.new(100,1.80,22,1,90,90)
+      @paciente = Paciente.new('Paciente','Apellido',9,1,datos)
+    end
+    describe "Jerarquia de clase Etiqueta" do
+      it "es una instancia de etiqueta" do
+        expect(@etiqueta).to be_an_instance_of Etiqueta
+      end
+      it "es del tipo Object" do
+        expect(@etiqueta.kind_of?Object).to be true
+      end
+      it "es un BasicObject" do
+        expect(@etiqueta.is_a?BasicObject).to be true
+      end
+    end
+    describe "Jerarquia de clase List" do
+      it "es una instancia de list" do
+        expect(@lista).to be_an_instance_of List
+      end
+      it "es del tipo Object" do
+        expect(@lista.kind_of?Object).to be true
+      end
+      it "es un BasicObject" do
+        expect(@lista.is_a?BasicObject).to be true
+      end
+    end
+    describe "Jerarquia de clase Persona" do
+      it "es una instancia de persona" do
+        expect(@persona).to be_an_instance_of Persona
+      end
+      it "es del tipo Object" do
+        expect(@persona.kind_of?Object).to be true
+      end
+      it "es un BasicObject" do
+        expect(@persona.is_a?BasicObject).to be true
+      end
+    end
+    describe "Jerarquia de clase Paciente" do
+      it "es una instancia de paciente" do
+        expect(@paciente).to be_an_instance_of Paciente
+      end
+      it "es también una Persona" do
+        expect(@paciente.is_a?Persona).to be true
+      end
+      it "es del tipo Object" do
+        expect(@paciente.kind_of?Object).to be true
+      end
+      it "es un BasicObject" do
+        expect(@paciente.is_a?BasicObject).to be true
+      end
+    end
+    describe "Tipo de clase Persona" do
+      it "la persona puede saludar" do
+        expect(@persona).to respond_to :saludar
+      end
+      it "la persona puede decir su edad" do
+        expect(@persona).to respond_to :mi_edad
+      end
+    end
+    describe "Tipo de la clase Paciente" do
+      it "el paciente puede saludar" do
+        expect(@paciente).to respond_to :saludar
+      end
+      it "el paciente puede decir su edad" do
+        expect(@paciente).to respond_to :mi_edad
+      end
+      it "el paciente puede estar en tratamiento" do
+        expect(@paciente).to respond_to :tratamiento
+      end
+    end
+  end
+
 end
