@@ -220,11 +220,11 @@ RSpec.describe InfoNutricional do
       end
     end
     describe "tiene metodos para manejar los datos:" do
-      it "puede saludar" do
-        expect(@paciente.saludar).not_to be nil
-      end
       it "dice si está en tratamiento" do
         expect(@paciente.tratamiento).not_to be nil
+      end
+      it "dice su imc" do
+        expect(@paciente.imc).not_to be nil
       end
     end
     describe "Se pueden clasificar" do
@@ -335,6 +335,9 @@ RSpec.describe InfoNutricional do
       end
       it "el paciente puede estar en tratamiento" do
         expect(@paciente).to respond_to :tratamiento
+      end
+      it "el paciente tiene un imc" do
+        expect(@paciente).to respond_to :imc
       end
     end
   end

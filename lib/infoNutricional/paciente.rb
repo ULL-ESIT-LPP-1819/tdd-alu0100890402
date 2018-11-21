@@ -13,7 +13,10 @@ class Paciente < Persona
       "sano"
     end
   end
+  def imc
+    datosAntrop.imc_value
+  end
   def to_s
-    "#{super} Estoy #{tratamiento}."
+    "#{super} Estoy #{tratamiento}. Mis datos son #{datosAntrop.to_s}"
   end
 end
