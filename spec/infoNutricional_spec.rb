@@ -287,6 +287,31 @@ RSpec.describe InfoNutricional do
         expect(@saludable.length).to eq 3
       end
     end
+    describe "Se pueden comparar" do
+      before :all do
+        @paciente2 = Paciente.new('Jorge','Porto',22,1,63,1.75,70,80)
+        @paciente3 = Paciente.new('Eduardo','Flores',22,1,76,1.80,75,85)
+      end
+      it "El operador > funciona correctamente" do
+        expect(@paciente > @paciente2).to be true
+      end
+      it "El operador >= funciona correctamente" do
+        expect(@paciente >= @paciente2).to be true
+      end
+      it "El operador < funciona correctamente" do
+        expect(@paciente < @paciente2).to be false
+      end
+      it "El operador <= funciona correctamente" do
+        expect(@paciente <= @paciente2).to be false
+      end
+      it "El operador == funciona correctamente" do
+        expect(@paciente == @paciente2).to be false
+      end
+      it "El operador between funciona correctamente" do
+        # paciente = 30.86; paciente2 = 20.57; paciente3 = 23.46
+        expect(@paciente3.between?(@paciente2,@paciente)).to be true
+      end
+    end
   end
 
   describe "Comprobación de jerarquía y tipo de clases" do

@@ -1,6 +1,11 @@
-# Clase paciente que hereda de persona 
+# Clase paciente que hereda de persona
 class Paciente < Persona
   attr_reader :datosAntrop
+  include Comparable
+
+  def <=>(other)
+    imc <=> other.imc
+  end
   def initialize (nombre,apellido,edad,sexo,peso,talla,cintura,cadera)
     super(nombre,apellido,edad,sexo)
     @datosAntrop = DatosAntrop.new(peso,talla,edad,sexo,cintura,cadera)
