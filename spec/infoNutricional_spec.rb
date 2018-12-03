@@ -63,6 +63,31 @@ RSpec.describe InfoNutricional do
         expect(@etiqueta).to respond_to(:formateado)
       end
     end
+    describe "Las instancias son comparables" do
+      before :all do
+        @etiqueta2 = Etiqueta.new("Doritos",25.8, 12.5, 61, 3.5, 7.6, 0.382)
+        @etiqueta3 = Etiqueta.new("Snickers",19.4, 10.2, 34.5, 26.3, 5.8, 0.22)
+      end
+      it "El operador > funciona correctamente" do
+        expect(@etiqueta > @etiqueta2).to be true
+      end
+      it "El operador >= funciona correctamente" do
+        expect(@etiqueta >= @etiqueta2).to be true
+      end
+      it "El operador < funciona correctamente" do
+        expect(@etiqueta < @etiqueta2).to be false
+      end
+      it "El operador <= funciona correctamente" do
+        expect(@etiqueta <= @etiqueta2).to be false
+      end
+      it "El operador == funciona correctamente" do
+        expect(@etiqueta == @etiqueta2).to be false
+      end
+      it "El operador between funciona correctamente" do
+        # etiqueta = 519.84; etiqueta2 = 508.892; etiqueta3 = 337.12
+        expect(@etiqueta2.between?(@etiqueta3,@etiqueta)).to be true
+      end
+    end
   end
 
   describe List do

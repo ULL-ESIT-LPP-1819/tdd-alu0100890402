@@ -1,8 +1,9 @@
 # InfoNutricional
 
 Clase que permite representar los valores de una etiqueta de información nutricional.
-Incluye también la clase lista desde la Practica 7
-Practica 8: Herencia
+- Incluye también la clase lista desde la Practica 7
+- Practica 8: Herencia
+- Practica 9: Módulos añadidos
 
 ## Installation
 

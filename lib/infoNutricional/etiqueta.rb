@@ -1,6 +1,13 @@
 class Etiqueta
   attr_reader :nombre,:grasas,:grasas_saturadas,:hidratos,:azucar,:proteinas,:sal
 
+  # Practica 9: módulos
+  include Comparable
+
+  def <=>(other)
+    val_energ_kcal <=> other.val_energ_kcal
+  end
+
   def initialize(nombre, grasas, grasas_saturadas, hidratos, azucar, proteinas, sal)
     @nombre, @grasas, @grasas_saturadas, @hidratos = nombre, grasas.to_f, grasas_saturadas.to_f, hidratos.to_f
     @azucar, @proteinas, @sal = azucar.to_f, proteinas.to_f, sal.to_f
@@ -39,6 +46,10 @@ class Etiqueta
   end
   def val_energ_kjul_ir
     (val_energ_kjul*100 / 8400).round(2)
+  end
+
+  def to_s
+    "#{@nombre}: #{val_energ_kcal} kcal"
   end
 
   def formateado
