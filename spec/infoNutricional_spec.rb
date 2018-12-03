@@ -275,7 +275,7 @@ RSpec.describe InfoNutricional do
       it "es una instancia de etiqueta" do
         expect(@etiqueta).to be_an_instance_of Etiqueta
       end
-      it "es del tipo Object" do
+      it "es tambien un Object" do
         expect(@etiqueta.kind_of?Object).to be true
       end
       it "es un BasicObject" do
@@ -286,7 +286,7 @@ RSpec.describe InfoNutricional do
       it "es una instancia de list" do
         expect(@lista).to be_an_instance_of List
       end
-      it "es del tipo Object" do
+      it "es tambien un Object" do
         expect(@lista.kind_of?Object).to be true
       end
       it "es un BasicObject" do
@@ -297,7 +297,7 @@ RSpec.describe InfoNutricional do
       it "es una instancia de persona" do
         expect(@persona).to be_an_instance_of Persona
       end
-      it "es del tipo Object" do
+      it "es tambien un Object" do
         expect(@persona.kind_of?Object).to be true
       end
       it "es un BasicObject" do
@@ -311,7 +311,7 @@ RSpec.describe InfoNutricional do
       it "es también una Persona" do
         expect(@paciente.is_a?Persona).to be true
       end
-      it "es del tipo Object" do
+      it "es tambien un Object" do
         expect(@paciente.kind_of?Object).to be true
       end
       it "es un BasicObject" do

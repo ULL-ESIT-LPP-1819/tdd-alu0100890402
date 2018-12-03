@@ -1,5 +1,4 @@
-# require './datosAntrop'
-
+# Clase paciente que hereda de persona 
 class Paciente < Persona
   attr_reader :datosAntrop
   def initialize (nombre,apellido,edad,sexo,peso,talla,cintura,cadera)

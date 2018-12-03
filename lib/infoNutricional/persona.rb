@@ -1,3 +1,4 @@
+# Clase persona
 class Persona
   attr_reader :nombre,:apellido,:edad,:sexo
   def initialize(nombre, apellido,edad,sexo)
