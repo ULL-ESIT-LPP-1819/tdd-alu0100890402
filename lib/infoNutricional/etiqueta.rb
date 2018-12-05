@@ -49,7 +49,7 @@ class Etiqueta
   end
 
   def to_s
-    "#{@nombre}: #{val_energ_kcal} kcal"
+    "#{@nombre}: #{val_energ_kcal.round(2)} kcal"
   end
 
   def formateado

@@ -190,6 +190,70 @@ RSpec.describe InfoNutricional do
         end
       end
     end
+    describe "Las instancias son enumerables" do
+      describe "Una lista de etiquetas de iformación nutricional" do
+        before :all do
+          @listaEtiquetas = List.new
+          @kitkat = Etiqueta.new("KitKat",27.6, 16, 61, 54.8, 6.5, 0.24)
+          @snickers = Etiqueta.new("Snickers",19.4, 10.2, 34.5, 26.3, 5.8, 0.22)
+          @pringles =  Etiqueta.new("Pringles",33, 9.6, 52.7, 2.6, 4, 0.592)
+          @doritos =  Etiqueta.new("Doritos",25.8, 12.5, 61, 3.5, 7.6, 0.382)
+          @jamon =  Etiqueta.new("Jamon Serrano",22.2, 6.53, 0.5, 0.4, 33.2, 3.1)
+          @listaEtiquetas.insertar_front(@kitkat)
+          @listaEtiquetas.insertar_front(@snickers)
+          @listaEtiquetas.insertar_front(@pringles)
+          @listaEtiquetas.insertar_front(@doritos)
+          @listaEtiquetas.insertar_front(@jamon)
+        end
+        # collect, select, max, min, sort.
+        it "El método collect funciona correctamente" do
+          expect(@listaEtiquetas.collect{ |i| i.nombre }).to eq ["Jamon Serrano","Doritos","Pringles","Snickers","KitKat"]
+        end
+        it "El método select funciona correctamente" do
+          expect(@listaEtiquetas.select{ |i| i.val_energ_kcal > 400 }).to eq [@doritos, @pringles, @kitkat]
+        end
+        it "El método max funciona correctamente" do
+          expect(@listaEtiquetas.max).to eq @pringles
+        end
+        it "El método min funciona correctamente" do
+          expect(@listaEtiquetas.min).to eq @snickers
+        end
+        it "El método sort funciona correctamente" do
+          expect(@listaEtiquetas.sort).to eq [@snickers, @jamon, @doritos, @kitkat, @pringles]
+        end
+      end
+      describe "Una lista de valoración nutricional de individuos" do
+        before :all do
+          @listaPacientes = List.new
+          @paciente = Paciente.new('Paciente','Apellido',9,1,100,1.80,90,90)
+          @paciente2 = Paciente.new('Jorge','Porto',22,1,63,1.75,70,80)
+          @paciente3 = Paciente.new('Eduardo','Flores',22,1,76,1.80,75,85)
+          @paciente4 = Paciente.new('Jesus','Jorge',47,1,80,1.87,80,83)
+          @paciente5 = Paciente.new('Sara','Porto',43,0,66,1.55,74,105)
+          @listaPacientes.insertar_front(@paciente)
+          @listaPacientes.insertar_front(@paciente2)
+          @listaPacientes.insertar_front(@paciente3)
+          @listaPacientes.insertar_front(@paciente4)
+          @listaPacientes.insertar_front(@paciente5)
+        end
+        # collect, select, max, min, sort.
+        it "El método collect funciona correctamente" do
+          expect(@listaPacientes.collect{ |x| x.nombre }).to eq ['Sara','Jesus','Eduardo','Jorge','Paciente']
+        end
+        it "El método select funciona correctamente" do
+          expect(@listaPacientes.select{ |x| x.imc >= 25 }).to eq [@paciente5,@paciente]
+        end
+        it "El método max funciona correctamente" do
+          expect(@listaPacientes.max).to eq @paciente
+        end
+        it "El método min funciona correctamente" do
+          expect(@listaPacientes.min).to eq @paciente2
+        end
+        it "El método sort funciona correctamente" do
+          expect(@listaPacientes.sort).to eq [@paciente2,@paciente4,@paciente3,@paciente5,@paciente]
+        end
+      end
+    end
   end
 
   describe Persona do

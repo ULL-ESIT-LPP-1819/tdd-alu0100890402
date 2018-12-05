@@ -3,6 +3,17 @@ Node = Struct.new(:value,:next,:prev)
 
 class List
   attr_reader :head, :tail
+
+  include Enumerable
+
+  def each
+    current = @head
+    until current == nil
+      yield current.value
+      current = current.next
+    end
+  end
+
   def initialize()
     @head, @tail = nil;
   end
