@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    infoNutricional (0.4.0)
+    infoNutricional (0.5.0)
 
 GEM
   remote: https://rubygems.org/
